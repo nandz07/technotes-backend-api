@@ -30,6 +30,7 @@ app.use('/', express.static(path.join(__dirname, 'public'))) // here path set ex
 // app.use( express.static('public')) // this also work , it is path on relative 
 
 app.use('/', require('./routes/root'));
+app.use('/users',require('./routes/userRoutes'))
 
 app.all('*', (req, res) => {
     res.status(404)
@@ -49,7 +50,7 @@ mongoose.connection.once('open',()=>{
     app.listen(PORT, () => console.log(`server running on PORT ${PORT}`))
 })
 
-mongoose.connection.on('erro',err=>{
+mongoose.connection.on('error',err=>{
     console.log(err)
     logEvents(`${err.no}: ${err.code}\t${err.syscall}\t${err.hostname}`, 'mongoErrLog.log')
 })
