@@ -30,6 +30,7 @@ app.use('/', express.static(path.join(__dirname, 'public'))) // here path set ex
 // app.use( express.static('public')) // this also work , it is path on relative 
 
 app.use('/', require('./routes/root'));
+app.use('/auth',require('./routes/authRoutes'))
 app.use('/users',require('./routes/userRoutes'))
 app.use('/notes',require('./routes/noteRoutes'))
 
