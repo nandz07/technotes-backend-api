@@ -8,7 +8,9 @@ const errorHandler=(err,req, res ,next)=>{
 
     res.status(status)
 
-    res.json({ message: err.message })
+    res.json({ message: err.message,
+        isError:true // set for RTK query , we have to ask backend developer to set this as a front end dev using RTK
+     })
 }
 
 module.exports=errorHandler
